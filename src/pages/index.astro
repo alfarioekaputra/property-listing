@@ -1,11 +1,177 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import PropertyCard from "../components/PropertyCard.vue";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const properties = [
+  {
+    id: 1,
+    title: "Villa Modern Minimalis",
+    location: "Jakarta Selatan",
+    price: "Rp 3.200.000.000",
+    image: "https://placehold.co/600x400?text=Villa Modern",
+  },
+  {
+    id: 2,
+    title: "Apartemen Premium",
+    location: "Bandung",
+    price: "Rp 1.500.000.000",
+    image: "https://placehold.co/600x400?text=Apartemen+Premium",
+  },
+  {
+    id: 3,
+    title: "Rumah Klasik Elegan",
+    location: "Bali",
+    price: "Rp 2.800.000.000",
+    image: "https://placehold.co/600x400?text=Rumah+Klasik",
+  },
+];
+
+const news = [
+  {
+    id: 1,
+    title: "Tren Properti 2025: Minimalis Masih Mendominasi",
+    date: "20 Feb 2025",
+    excerpt:
+      "Desain minimalis kembali menjadi pilihan utama di pasar properti.",
+  },
+  {
+    id: 2,
+    title: "Harga Tanah di Bali Naik 15%",
+    date: "15 Feb 2025",
+    excerpt: "Lonjakan permintaan wisatawan memengaruhi harga properti.",
+  },
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Home">
+  <!-- Hero Section -->
+  <section
+    id="hero"
+    class="pt-24 pb-32 bg-gradient-to-r from-gray-800 to-gray-600 text-white"
+  >
+    <div class="container mx-auto text-center">
+      <h2 class="text-5xl font-serif mb-6 leading-tight" data-aos="fade-up">
+        Temukan Keindahan Hunian Anda
+      </h2>
+      <p
+        class="text-lg mb-10 max-w-2xl mx-auto"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        Jelajahi koleksi properti eksklusif dengan desain elegan dan lokasi
+        strategis.
+      </p>
+      <div
+        class="max-w-lg mx-auto flex"
+        data-aos="fade-up"
+        data-aos-delay="400"
+      >
+        <input
+          type="text"
+          placeholder="Cari properti impian Anda..."
+          class="w-full p-4 rounded-l-full border-none bg-white focus:outline-none text-gray-800"
+          id="search-input"
+        />
+        <button
+          class="bg-amber-500 text-white p-4 rounded-r-full hover:bg-amber-600 transition duration-300"
+          onclick="alert(document.getElementById('search-input').value ? `Mencari: ${document.getElementById('search-input').value}` : 'Masukkan kata kunci terlebih dahulu')"
+        >
+          Cari
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Property Listing Section -->
+  <section id="properties" class="py-20 bg-gray-50">
+    <div class="container mx-auto">
+      <h3
+        class="text-4xl font-serif text-gray-800 text-center mb-12"
+        data-aos="fade-up"
+      >
+        Koleksi Properti Terbaru
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {
+          properties.map((property) => (
+            <PropertyCard
+              title={property.title}
+              location={property.location}
+              price={property.price}
+              image={property.image}
+              delay={property.id * 200}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <!-- News Section -->
+  <section id="news" class="py-20 bg-white">
+    <div class="container mx-auto">
+      <h3
+        class="text-4xl font-serif text-gray-800 text-center mb-12"
+        data-aos="fade-up"
+      >
+        Berita Properti Terkini
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          news.map((item) => (
+            <div
+              class="bg-gray-100 p-6 rounded-lg shadow-md"
+              data-aos="fade-up"
+              data-aos-delay={item.id * 200}
+            >
+              <h4 class="text-xl font-semibold text-gray-800">{item.title}</h4>
+              <p class="text-gray-500 text-sm mb-2">{item.date}</p>
+              <p class="text-gray-600">{item.excerpt}</p>
+              <a
+                href="#"
+                class="text-amber-500 hover:underline mt-4 inline-block"
+              >
+                Baca Selengkapnya
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gray-50">
+    <div class="container mx-auto text-center">
+      <h3 class="text-4xl font-serif text-gray-800 mb-12" data-aos="fade-up">
+        Hubungi Kami
+      </h3>
+      <div class="max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+        <p class="text-lg text-gray-600 mb-8">
+          Punya pertanyaan atau ingin konsultasi? Kami siap membantu Anda.
+        </p>
+        <form class="space-y-6">
+          <input
+            type="text"
+            placeholder="Nama Anda"
+            class="w-full p-4 rounded-full border border-gray-300 focus:outline-none focus:border-amber-500"
+          />
+          <input
+            type="email"
+            placeholder="Email Anda"
+            class="w-full p-4 rounded-full border border-gray-300 focus:outline-none focus:border-amber-500"
+          />
+          <textarea
+            placeholder="Pesan Anda"
+            class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-500"
+            rows="4"></textarea>
+          <button
+            type="submit"
+            class="bg-amber-500 text-white px-8 py-3 rounded-full hover:bg-amber-600 transition duration-300"
+          >
+            Kirim Pesan
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
 </Layout>
