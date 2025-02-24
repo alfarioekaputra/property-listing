@@ -8,27 +8,28 @@ const properties = [
     title: "Villa Modern Minimalis",
     location: "Jakarta Selatan",
     price: "Rp 3.200.000.000",
-    image: "https://placehold.co/600x400?text=Villa Modern",
+    image: "/images/villa.jpg",
   },
   {
     id: 2,
     title: "Apartemen Premium",
     location: "Bandung",
     price: "Rp 1.500.000.000",
-    image: "https://placehold.co/600x400?text=Apartemen+Premium",
+    image: "/images/apartment.jpg",
   },
   {
     id: 3,
     title: "Rumah Klasik Elegan",
     location: "Bali",
     price: "Rp 2.800.000.000",
-    image: "https://placehold.co/600x400?text=Rumah+Klasik",
+    image: "/images/classic-house.jpg",
   },
 ];
 
 const news = [
   {
     id: 1,
+    slug: "tren-properti-2025",
     title: "Tren Properti 2025: Minimalis Masih Mendominasi",
     date: "20 Feb 2025",
     excerpt:
@@ -36,6 +37,7 @@ const news = [
   },
   {
     id: 2,
+    slug: "harga-tanah-bali",
     title: "Harga Tanah di Bali Naik 15%",
     date: "15 Feb 2025",
     excerpt: "Lonjakan permintaan wisatawan memengaruhi harga properti.",
@@ -43,18 +45,27 @@ const news = [
 ];
 ---
 
-<Layout title="Home">
+<Layout
+  title="Home"
+  description="Temukan koleksi properti eksklusif dan berita properti terkini di Rumahku."
+  canonical="https://rumahku.netlify.app"
+>
   <!-- Hero Section -->
   <section
     id="hero"
-    class="pt-24 pb-32 bg-gradient-to-r from-gray-800 to-gray-600 text-white"
+    class="pt-24 pb-32 bg-cover bg-center bg-no-repeat text-white relative"
+    style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop');"
   >
-    <div class="container mx-auto text-center">
-      <h2 class="text-5xl font-serif mb-6 leading-tight" data-aos="fade-up">
+    <div class="absolute inset-0 bg-gray-900 opacity-70 z-0"></div>
+    <div class="container mx-auto text-center relative z-10">
+      <h2
+        class="text-5xl font-serif mb-6 leading-tight text-shadow-lg"
+        data-aos="fade-up"
+      >
         Temukan Keindahan Hunian Anda
       </h2>
       <p
-        class="text-lg mb-10 max-w-2xl mx-auto"
+        class="text-lg mb-10 max-w-2xl mx-auto text-shadow-md"
         data-aos="fade-up"
         data-aos-delay="200"
       >
@@ -127,7 +138,7 @@ const news = [
               <p class="text-gray-500 text-sm mb-2">{item.date}</p>
               <p class="text-gray-600">{item.excerpt}</p>
               <a
-                href="#"
+                href={`/news/${item.slug}`}
                 class="text-amber-500 hover:underline mt-4 inline-block"
               >
                 Baca Selengkapnya
