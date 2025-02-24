@@ -7,12 +7,18 @@ import vue from '@astrojs/vue';
 import robotsTxt from 'astro-robots-txt';
 
 
+import netlify from '@astrojs/netlify';
+
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://listing-rumah.vercel.app/',
+
   vite: {
     plugins: [tailwindcss()]
   },
 
-  integrations: [vue(), robotsTxt()]
+  integrations: [vue(), robotsTxt()],
+  output: 'server',
+  adapter: netlify()
 });
