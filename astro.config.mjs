@@ -12,13 +12,13 @@ import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://listing-rumah.vercel.app/',
+  site: 'https://rumahku.netlify.app',
 
   vite: {
     plugins: [tailwindcss()]
   },
 
   integrations: [vue(), robotsTxt()],
-  output: 'server',
+  
   adapter: netlify()
 });
