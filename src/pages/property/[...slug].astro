@@ -1,0 +1,165 @@
+---
+// export const prerender = false;
+import Layout from "../../layouts/Layout.astro";
+
+const properties = [
+  {
+    id: "1",
+    slug: "villa-modern-minimalis",
+    title: "Villa Modern Minimalis",
+    location: "Jakarta Selatan",
+    price: "Rp 3.200.000.000",
+    image: "/images/villa.jpg",
+    description:
+      "Villa modern dengan desain minimalis yang menawan, cocok untuk keluarga muda yang menginginkan kenyamanan dan gaya.",
+    features: {
+      bedrooms: 3,
+      bathrooms: 2,
+      area: "150 m²",
+      garage: "1 mobil",
+    },
+    additionalImages: ["/images/villa.jpg", "/images/villa.jpg"],
+  },
+  {
+    id: "2",
+    slug: "apartemen-premium",
+    title: "Apartemen Premium",
+    location: "Bandung",
+    price: "Rp 1.500.000.000",
+    image: "/images/apartment.jpg",
+    description:
+      "Apartemen mewah di pusat kota Bandung, dilengkapi fasilitas modern dan akses mudah ke pusat perbelanjaan.",
+    features: {
+      bedrooms: 2,
+      bathrooms: 1,
+      area: "80 m²",
+      garage: "Tidak ada",
+    },
+    additionalImages: ["/images/apartment.jpg", "/images/apartment.jpg"],
+  },
+  {
+    id: "3",
+    slug: "rumah-klasik-elegan",
+    title: "Rumah Klasik Elegan",
+    location: "Bali",
+    price: "Rp 2.800.000.000",
+    image: "/images/classic-house.jpg",
+    description:
+      "Rumah bergaya klasik dengan sentuhan tradisional Bali, ideal untuk liburan atau investasi jangka panjang.",
+    features: {
+      bedrooms: 4,
+      bathrooms: 3,
+      area: "200 m²",
+      garage: "2 mobil",
+    },
+    additionalImages: [
+      "/images/classic-house.jpg",
+      "/images/classic-house.jpg",
+    ],
+  },
+];
+
+const { slug } = Astro.params;
+const property = properties.find((item) => item.slug === slug);
+
+if (!property) {
+  return Astro.redirect("/404");
+}
+---
+
+<Layout
+  title={property.title}
+  description={property.description}
+  canonical={`https://rumahku.netlify.com/property/${slug}`}
+>
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <!-- Gambar Utama -->
+      <div class="relative mb-8" data-aos="fade-up">
+        <img
+          src={property.image}
+          alt={property.title}
+          class="w-full h-[500px] object-cover rounded-lg shadow-lg"
+        />
+      </div>
+
+      <!-- Judul dan Harga -->
+      <div
+        class="flex justify-between items-center mb-6"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        <h1 class="text-4xl font-serif text-gray-800">{property.title}</h1>
+        <p class="text-amber-600 font-bold text-2xl">{property.price}</p>
+      </div>
+
+      <!-- Lokasi -->
+      <p
+        class="text-gray-500 text-lg mb-6"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        Lokasi: {property.location}
+      </p>
+
+      <!-- Deskripsi -->
+      <div class="mb-10" data-aos="fade-up" data-aos-delay="400">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Deskripsi</h2>
+        <p class="text-gray-600 leading-relaxed">{property.description}</p>
+      </div>
+
+      <!-- Fitur Properti -->
+      <div class="mb-10" data-aos="fade-up" data-aos-delay="500">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+          Fitur Properti
+        </h2>
+        <ul class="grid grid-cols-2 gap-4 text-gray-600">
+          <li>
+            <span class="font-semibold">Kamar Tidur:</span>
+            {property.features.bedrooms}
+          </li>
+          <li>
+            <span class="font-semibold">Kamar Mandi:</span>
+            {property.features.bathrooms}
+          </li>
+          <li>
+            <span class="font-semibold">Luas Area:</span>
+            {property.features.area}
+          </li>
+          <li>
+            <span class="font-semibold">Garasi:</span>
+            {property.features.garage}
+          </li>
+        </ul>
+      </div>
+
+      <!-- Gambar Tambahan -->
+      <div class="mb-10" data-aos="fade-up" data-aos-delay="600">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Galeri</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {
+            property.additionalImages.map((img, index) => (
+              <img
+                src={img}
+                alt={`Galeri ${property.title} ${index + 1}`}
+                class="w-full h-64 object-cover rounded-lg shadow-md"
+              />
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Tombol Aksi -->
+      <div class="text-center" data-aos="fade-up" data-aos-delay="700">
+        <button
+          class="bg-amber-500 text-white px-8 py-3 rounded-full hover:bg-amber-600 transition duration-300 mr-4"
+        >
+          Hubungi Agen
+        </button>
+        <a href="/#properties" class="text-amber-500 hover:underline"
+          >Kembali ke Daftar Properti</a
+        >
+      </div>
+    </div>
+  </section>
+</Layout>

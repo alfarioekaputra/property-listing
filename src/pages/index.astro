@@ -5,24 +5,30 @@ import PropertyCard from "../components/PropertyCard.vue";
 const properties = [
   {
     id: 1,
+    slug: "villa-modern-minimalis",
     title: "Villa Modern Minimalis",
     location: "Jakarta Selatan",
-    price: "Rp 3.200.000.000",
+    price: "Rp3.200.000.000",
     image: "/images/villa.jpg",
+    description: "Villa modern dengan 3 kamar tidur dan pemandangan kota.",
   },
   {
     id: 2,
+    slug: "apartemen-premium",
     title: "Apartemen Premium",
     location: "Bandung",
-    price: "Rp 1.500.000.000",
+    price: "Rp1.500.000.000",
     image: "/images/apartment.jpg",
+    description: "Apartemen yang nyaman dengan fasilitas modern.",
   },
   {
     id: 3,
+    slug: "rumah-klasik-elegan",
     title: "Rumah Klasik Elegan",
     location: "Bali",
-    price: "Rp 2.800.000.000",
+    price: "Rp2.800.000.000",
     image: "/images/classic-house.jpg",
+    description: "Rumah klasik dengan desain yang klasik.",
   },
 ];
 
@@ -110,6 +116,7 @@ const news = [
               location={property.location}
               price={property.price}
               image={property.image}
+              slug={property.slug}
               delay={property.id * 200}
             />
           ))

@@ -8,13 +8,13 @@
     <div class="p-6">
       <h4 class="text-xl font-semibold text-gray-800">{{ title }}</h4>
       <p class="text-gray-500">{{ location }}</p>
-      <p class="text-amber-600 font-bold mt-2">{{ price }}</p>
-      <button
+      <p class="text-amber-600 font-bold mt-2 mb-4">{{ price }}</p>
+      <a
+        :href="`/property/${slug}`"
         class="mt-4 bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 transition duration-300"
-        @click="viewDetails"
       >
         Lihat Detail
-      </button>
+      </a>
     </div>
   </div>
 </template>
@@ -26,6 +26,7 @@ export default {
     location: String,
     price: String,
     image: String,
+    slug: String,
     delay: Number,
   },
   methods: {
