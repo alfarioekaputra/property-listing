@@ -31,5 +31,6 @@ export default defineConfig({
     ],
   }), db()],
   
-  adapter: netlify()
+  adapter: netlify(),
+  output: 'server'
 });
