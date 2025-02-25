@@ -2,6 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import PropertyCard from "../components/PropertyCard.vue";
 
+Astro.response.headers.set(
+  "CDN-Cache-Control",
+  "public, max-age=45, must-revalidate"
+);
+
 const properties = [
   {
     id: 1,
@@ -64,10 +69,7 @@ const news = [
   >
     <div class="absolute inset-0 bg-gray-900 opacity-70 z-0"></div>
     <div class="container mx-auto text-center relative z-10">
-      <h2
-        class="text-5xl mb-6 leading-tight text-shadow-lg"
-        data-aos="fade-up"
-      >
+      <h2 class="text-5xl mb-6 leading-tight text-shadow-lg" data-aos="fade-up">
         Temukan Keindahan Hunian Anda
       </h2>
       <p
@@ -102,10 +104,7 @@ const news = [
   <!-- Property Listing Section -->
   <section id="properties" class="py-20 bg-gray-50">
     <div class="container mx-auto">
-      <h3
-        class="text-4xl text-gray-800 text-center mb-12"
-        data-aos="fade-up"
-      >
+      <h3 class="text-4xl text-gray-800 text-center mb-12" data-aos="fade-up">
         Koleksi Properti Terbaru
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -127,10 +126,7 @@ const news = [
   <!-- News Section -->
   <section id="news" class="py-20 bg-white">
     <div class="container mx-auto">
-      <h3
-        class="text-4xl text-gray-800 text-center mb-12"
-        data-aos="fade-up"
-      >
+      <h3 class="text-4xl text-gray-800 text-center mb-12" data-aos="fade-up">
         Berita Properti Terkini
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">

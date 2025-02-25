@@ -1,0 +1,12 @@
+---
+import AdminLayout from "../../layouts/Admin.astro";
+
+import { SignOutButton } from "@clerk/astro/components";
+---
+
+<AdminLayout title="Halaman index admin">
+  <h1>Halaman index admin</h1>
+  <SignOutButton asChild>
+    <button class="btn btn-primary">Logout</button>
+  </SignOutButton>
+</AdminLayout>

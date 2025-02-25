@@ -1,0 +1,55 @@
+---
+import "../styles/global.css";
+import "@fontsource/poppins";
+
+import { SignedIn, SignedOut, UserButton } from "@clerk/astro/components";
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div class="bg-stone-600 shadow-sm text-white">
+      <div class="container mx-auto navbar">
+        <div class="flex-1">
+          <a class="btn btn-ghost text-xl">RumahKu</a>
+        </div>
+        <div class="flex-end justify-center">
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto mt-4">
+      <slot />
+    </div>
+    <!-- Footer -->
+    <footer
+      class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4"
+    >
+      <aside>
+        <p>
+          Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries
+          Ltd
+        </p>
+      </aside>
+    </footer>
+  </body>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+  </style>
+</html>

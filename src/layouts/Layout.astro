@@ -1,12 +1,14 @@
 ---
-import { SEO } from 'astro-seo';
+import { SEO } from "astro-seo";
 
-import '../styles/global.css';
-import '@fontsource/poppins';
+import "../styles/global.css";
+import "@fontsource/poppins";
+
+import { SignInButton } from "@clerk/astro/components";
 
 const {
   title,
-  description = 'Temukan properti impian Anda dengan RumahKu.',
+  description = "Temukan properti impian Anda dengan RumahKu.",
   canonical,
 } = Astro.props;
 ---
@@ -25,20 +27,20 @@ const {
       openGraph={{
         basic: {
           title: `${title} - RumahKu`,
-          type: 'website',
+          type: "website",
           url: Astro.url.href,
-          image: '/images/og-image.jpg',
+          image: "/images/og-image.jpg",
         },
         image: {
-          alt: 'RumahKu Preview',
+          alt: "RumahKu Preview",
         },
       }}
       twitter={{
-        card: 'summary_large_image',
+        card: "summary_large_image",
         title: `${title} - RumahKu`,
         description: description,
-        image: '/images/og-image.jpg',
-        imageAlt: 'RumahKu Preview',
+        image: "/images/og-image.jpg",
+        imageAlt: "RumahKu Preview",
       }}
     />
     <title>{title}</title>
@@ -72,11 +74,6 @@ const {
             class="text-gray-600 hover:text-gray-900 transition duration-300"
             >Contact</a
           >
-          <button
-            class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 transition duration-300"
-          >
-            Login
-          </button>
         </nav>
       </div>
     </header>
@@ -93,6 +90,6 @@ const {
 
 <style>
   body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 </style>

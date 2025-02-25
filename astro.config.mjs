@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 
 import db from '@astrojs/db';
 import vue from '@astrojs/vue';
+import clerk from "@clerk/astro";
 import netlify from '@astrojs/netlify';
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
@@ -29,8 +30,10 @@ export default defineConfig({
         disallow: ['/admin'], // Contoh halaman yang tidak diindeks
       },
     ],
-  }), db()],
-  
-  adapter: netlify(),
+  }), db(), clerk()],
+
+  adapter: netlify({
+    cacheOnDemandPages: true,
+  }),
   output: 'server'
 });
