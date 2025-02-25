@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import PropertyCard from "../components/PropertyCard.vue";
+// import PropertyCard from "../components/PropertyCard.vue";
+import PropertyCard from "../components/PropertyCard.astro";
 
 Astro.response.headers.set(
   "CDN-Cache-Control",
@@ -14,7 +15,7 @@ const properties = [
     title: "Villa Modern Minimalis",
     location: "Jakarta Selatan",
     price: "Rp3.200.000.000",
-    image: "/images/villa.jpg",
+    image: "/src/assets/villa.jpg",
     description: "Villa modern dengan 3 kamar tidur dan pemandangan kota.",
   },
   {
@@ -23,7 +24,7 @@ const properties = [
     title: "Apartemen Premium",
     location: "Bandung",
     price: "Rp1.500.000.000",
-    image: "/images/apartment.jpg",
+    image: "/src/assets/apartment.jpg",
     description: "Apartemen yang nyaman dengan fasilitas modern.",
   },
   {
@@ -32,7 +33,7 @@ const properties = [
     title: "Rumah Klasik Elegan",
     location: "Bali",
     price: "Rp2.800.000.000",
-    image: "/images/classic-house.jpg",
+    image: "/src/assets/classic-house.jpg",
     description: "Rumah klasik dengan desain yang klasik.",
   },
 ];
