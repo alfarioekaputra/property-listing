@@ -1,0 +1,59 @@
+---
+import AdminLayout from "@layouts/Admin.astro";
+
+import { db, CustomerInquiry, desc } from "astro:db";
+
+const customers = await db
+  .select()
+  .from(CustomerInquiry)
+  .orderBy(desc(CustomerInquiry.submittedAt));
+---
+
+<AdminLayout title="Customer">
+  <div class="card card-border bg-base-100">
+    <div class="card-body">
+      <h2 class="card-title">Customers List</h2>
+      <div class="overflow-x-auto">
+        <table class="table table-zebra">
+          <!-- head -->
+          <thead>
+            <tr>
+              <th>Property Name</th>
+              <th>Customer Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Message</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              customers.map((customer) => (
+                <tr>
+                  <td>{customer.property}</td>
+                  <td>{customer.name}</td>
+                  <td>{customer.email}</td>
+                  <td>{customer.phone}</td>
+                  <td>{customer.message}</td>
+                  <td
+                    class={
+                      customer.status === "New"
+                        ? "text-red-500"
+                        : customer.status === "Process"
+                          ? "text-yellow-500"
+                          : customer.status === "Closing"
+                            ? "text-green-500"
+                            : ""
+                    }
+                  >
+                    {customer.status}
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</AdminLayout>

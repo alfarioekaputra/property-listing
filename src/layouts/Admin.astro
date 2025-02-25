@@ -1,42 +1,79 @@
 ---
-import "../styles/global.css";
+import "@styles/global.css";
 import "@fontsource/poppins";
 
+import { ClientRouter } from "astro:transitions";
 import { SignedIn, SignedOut, UserButton } from "@clerk/astro/components";
 
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light">
+<html
+  lang="en"
+  data-theme="light"
+  transition:name="root"
+  transition:animate="none"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
+    <ClientRouter />
     <title>{title}</title>
   </head>
 
-  <body>
+  <body class="bg-stone-300 min-h-screen">
     <!-- Header -->
     <div class="bg-stone-600 shadow-sm text-white">
       <div class="container mx-auto navbar">
-        <div class="flex-1">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"></path>
+              </svg>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-stone-500 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            >
+              <li><a href="/admin">Dashboard</a></li>
+              <li><a href="/admin/customers">Customer</a></li>
+            </ul>
+          </div>
           <a class="btn btn-ghost text-xl">RumahKu</a>
         </div>
-        <div class="flex-end justify-center">
+
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li><a href="/admin">Dashboard</a></li>
+            <li><a href="/admin/customer">Customer</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end">
           <SignedIn>
             <UserButton />
           </SignedIn>
         </div>
       </div>
     </div>
-    <div class="container mx-auto mt-4">
+    <div class="container mx-auto mt-4" transition:animate="slide">
       <slot />
     </div>
     <!-- Footer -->
     <footer
-      class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4"
+      class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4 sticky top-[100vh]"
     >
       <aside>
         <p>
@@ -45,9 +82,7 @@ const { title } = Astro.props;
         </p>
       </aside>
     </footer>
-  </body>
-
-  <style>
+  </body><style>
     body {
       font-family: "Poppins", sans-serif;
     }

@@ -1,12 +1,9 @@
 ---
-import AdminLayout from "../../layouts/Admin.astro";
-
-import { SignOutButton } from "@clerk/astro/components";
+import AdminLayout from "@layouts/Admin.astro";
 ---
 
 <AdminLayout title="Halaman index admin">
-  <h1>Halaman index admin</h1>
-  <SignOutButton asChild>
-    <button class="btn btn-primary">Logout</button>
-  </SignOutButton>
+  <div class="h-screen">
+    <h1>Halaman index admin</h1>
+  </div>
 </AdminLayout>

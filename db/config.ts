@@ -8,6 +8,7 @@ const CustomerInquiry = defineTable({
     email: column.text(),
     phone: column.text(),
     message: column.text(),
+    status: column.text({default: 'New'}),
     submittedAt: column.date({default: new Date()}),
   }
 })
