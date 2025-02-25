@@ -137,7 +137,7 @@ const closeModal = () => {
           <button @click="openModal" class="bg-amber-500 text-white px-8 py-3 rounded-full hover:bg-amber-600 transition duration-300 mr-4">
             Hubungi Agen
           </button>
-          <a href="/#properties" class="text-amber-500 hover:underline">Kembali ke Daftar Properti</a>
+          <a href="/#properties" class="text-amber-500 hover:underline">Kembali</a>
         </div>
       </div>
     </section>

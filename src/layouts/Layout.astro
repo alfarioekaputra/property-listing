@@ -46,35 +46,96 @@ const {
 
   <body class="bg-gray-50">
     <!-- Header -->
-    <header class="fixed top-0 w-full bg-white shadow-md z-10">
-      <div
-        class="container mx-auto flex justify-between items-center py-4 px-6"
-      >
-        <h1 class="text-3xl text-gray-800">RumahKu</h1>
-        <nav class="space-x-8">
-          <a
-            href="/"
-            class="text-gray-600 hover:text-gray-900 transition duration-300"
-            >Home</a
-          >
-          <a
-            href="#properties"
-            class="text-gray-600 hover:text-gray-900 transition duration-300"
-            >Properties</a
-          >
-          <a
-            href="#news"
-            class="text-gray-600 hover:text-gray-900 transition duration-300"
-            >News</a
-          >
-          <a
-            href="#contact"
-            class="text-gray-600 hover:text-gray-900 transition duration-300"
-            >Contact</a
-          >
-        </nav>
+    <div class="sticky top-0 w-full bg-white shadow-md z-100">
+      <div class="navbar container mx-auto text-gray-700">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"></path>
+              </svg>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-white rounded-box z-1 mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <a
+                  href="/"
+                  class="text-gray-600 hover:text-gray-900 transition duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#properties"
+                  class="text-gray-600 hover:text-gray-900 transition duration-300"
+                  >Properties</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#news"
+                  class="text-gray-600 hover:text-gray-900 transition duration-300"
+                  >News</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-600 hover:text-gray-900 transition duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <a href="/" class="text-xl">RumahKu</a>
+        </div>
+        <div class="navbar-end hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li>
+              <a
+                href="#hero"
+                class="btn btn-ghost btn-active hover:text-white transition duration-300"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#properties"
+                class="btn btn-ghost hover:text-white transition duration-300"
+                >Properties</a
+              >
+            </li>
+            <li>
+              <a
+                href="#news"
+                class="btn btn-ghost hover:text-white transition duration-300"
+                >News</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="btn btn-ghost hover:text-white transition duration-300"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
-    </header>
+    </div>
+
     <slot />
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
@@ -85,6 +146,30 @@ const {
     <script src="../js/aos"></script>
   </body>
 </html>
+
+<script>
+  var button = document.querySelector("btn");
+
+  document.querySelectorAll(".btn-ghost").forEach((item) => {
+    item.addEventListener("click", function () {
+      // Hapus kelas 'active' dari semua elemen dengan kelas 'btn-ghost'
+      document
+        .querySelectorAll(".btn-ghost")
+        .forEach((nav) => nav.classList.remove("btn-active"));
+
+      // Tambahkan kelas 'active' ke elemen yang diklik
+      this.classList.add("btn-active");
+    });
+  });
+
+  // button.addEventListener("click", function () {
+  //   var path = location.pathname; // ex: '/profile';
+  //   console.log(path);
+  // });
+
+  // var activeItem = document.querySelector("a[href='#" + path + "]");
+  // activeItem.classList.add("btn-active");
+</script>
 
 <style>
   body {
